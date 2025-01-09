@@ -1,0 +1,14 @@
+---
+services:
+  postgres:
+    image: postgres:15.8-alpine3.19
+    mem_limit: 256m
+    volumes:
+    - postgresql:/var/lib/postgresql/data
+    ports:
+    - "5434:5432"
+    environment:
+    - POSTGRES_USER=menu_planner
+    - POSTGRES_PASSWORD=menu_planner_pg_passwd
+volumes:
+  postgresql: 
