@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "ingredients#index"
+  resources :ingredients, only: %i[index create]
 end
