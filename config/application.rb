@@ -15,6 +15,8 @@ module MenuPlanner
       generate.test_framework :test_unit, fixture: false
     end
 
+    config.active_record.schema_format = :sql
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
