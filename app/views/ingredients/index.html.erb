@@ -1,5 +1,12 @@
 <h1>Liste des ingrédients</h1>
 
+<%= simple_form_for @ingredient do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.button :submit %>
+<% end %>
+
+
 <ul>
 <% @ingredients.each do |ingredient| %>
     <li>
@@ -7,9 +14,3 @@
     </li>
 <% end %>
 </ul>
-
-<%= simple_form_for @ingredient do |f| %>
-  <%= f.input :name %>
-  <%= f.input :category %>
-  <%= f.button :submit %>
-<% end %>
