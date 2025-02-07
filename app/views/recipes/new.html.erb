@@ -1,0 +1,34 @@
+<h1>Ajouter une recette</h1>
+
+<%= simple_form_for @recipe do |f| %>
+  <%= f.input :title %>
+  <%= f.input :duration %>
+  <%= f.input :shares %>
+<% end %>
+
+
+<%= simple_form_for @recipe_ingredient do |f| %>
+  <%= f.input :quantity %>
+  <%= f.input :unit %>
+  <%= f.input :ingredient %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= form_with url: recipes_path, method: :post, class:"simple_form", data: {controller: "recipe-creation"} do |form| %>
+  <div>
+  <%= form.label "Title:"  %>
+  <%= form.text_field :title %>
+  </div>
+  <div>
+  <%= form.label "Duration:"  %>
+  <%= form.text_field :duration %>
+  </div>
+  <div>
+  <%= form.label "Shares:"  %>
+  <%= form.text_field :shares %>
+  </div>
+  <%= render "recipe_ingredients_form", form: form %>
+  <div>
+  <%= form.submit "Search" %>
+  </div>
+<% end %>
