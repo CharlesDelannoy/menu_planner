@@ -4,31 +4,11 @@
   <%= f.input :title %>
   <%= f.input :duration %>
   <%= f.input :shares %>
-<% end %>
-
-
-<%= simple_form_for @recipe_ingredient do |f| %>
-  <%= f.input :quantity %>
-  <%= f.input :unit %>
-  <%= f.input :ingredient %>
+  <%= f.simple_fields_for :recipe_ingredients do |i| %>
+    <h3>Ingredients</h3>
+    <%= i.input :quantity %>
+    <%= i.input :unit %>
+    <%= i.collection_select :ingredient_id, Ingredient.all, :id, :name%>
+  <% end %>
   <%= f.button :submit %>
-<% end %>
-
-<%= form_with url: recipes_path, method: :post, class:"simple_form", data: {controller: "recipe-creation"} do |form| %>
-  <div>
-  <%= form.label "Title:"  %>
-  <%= form.text_field :title %>
-  </div>
-  <div>
-  <%= form.label "Duration:"  %>
-  <%= form.text_field :duration %>
-  </div>
-  <div>
-  <%= form.label "Shares:"  %>
-  <%= form.text_field :shares %>
-  </div>
-  <%= render "recipe_ingredients_form", form: form %>
-  <div>
-  <%= form.submit "Search" %>
-  </div>
 <% end %>
