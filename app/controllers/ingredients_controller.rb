@@ -11,7 +11,7 @@ class IngredientsController < ApplicationController
       redirect_to ingredients_path
     else
       @ingredients = Ingredient.all
-      render :index
+      render :index, status: 422
     end
   end
 
