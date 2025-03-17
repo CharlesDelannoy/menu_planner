@@ -1,14 +1,7 @@
-
-
-<div>
-  <%= form.label "Quantity:"  %>
-  <%= form.text_field :quantity %>
-</div>
-<div>
-  <%= form.label "Unit:"  %>
-  <%= form.text_field :unit %>
-</div>
-<div>
-  <%= form.label "Ingredient:"  %>
-  <%= form.text_field :ingredient %>
+<div data-recipe-creation-target="template">
+  <%= form.simple_fields_for :recipe_ingredients, child_index: "TEMPLATE_RECORD" do |i| %>
+      <%= i.input :quantity %>
+      <%= i.input :unit %>
+      <%= i.collection_select :ingredient_id, Ingredient.all, :id, :name%>
+  <% end %>
 </div>
