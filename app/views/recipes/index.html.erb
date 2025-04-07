@@ -4,7 +4,7 @@
   <p><%=recipe.title %></p>
   <ul>
     <% recipe.recipe_ingredients.each do |ri| %>
-      <li><%= ri.quantity %> <%= ri.unit %> de <%= ri.ingredient.name %></li>
+      <li><%= ri.quantity %> <%= ri.unit %> <%= ri.ingredient.name %></li>
     <% end %>
   </ul>
 <% end %>
