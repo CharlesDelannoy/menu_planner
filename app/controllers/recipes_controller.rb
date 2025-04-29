@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.recipe_ingredients.build.build_ingredient
+    authorize @recipe
     # @recipe_ingredient = @recipe.recipe_ingredients.build
   end
 
