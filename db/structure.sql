@@ -135,8 +135,7 @@ CREATE TABLE public.recipes (
     shares integer,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    author_id bigint,
-    CONSTRAINT author_id_not_null CHECK ((author_id IS NOT NULL))
+    author_id bigint NOT NULL
 );
 
 
@@ -375,6 +374,8 @@ ALTER TABLE ONLY public.instructions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250505145554'),
+('20250505145434'),
 ('20250505145057'),
 ('20250505142635'),
 ('20250505142024'),
