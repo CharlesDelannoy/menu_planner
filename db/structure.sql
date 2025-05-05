@@ -134,7 +134,9 @@ CREATE TABLE public.recipes (
     duration integer,
     shares integer,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    author_id bigint,
+    CONSTRAINT author_id_not_null CHECK ((author_id IS NOT NULL))
 );
 
 
@@ -314,6 +316,13 @@ CREATE INDEX index_recipe_ingredients_on_recipe_id ON public.recipe_ingredients 
 
 
 --
+-- Name: index_recipes_on_author_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_recipes_on_author_id ON public.recipes USING btree (author_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -325,6 +334,14 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: recipes fk_rails_08ee84afe6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.recipes
+    ADD CONSTRAINT fk_rails_08ee84afe6 FOREIGN KEY (author_id) REFERENCES public.users(id);
 
 
 --
@@ -358,6 +375,9 @@ ALTER TABLE ONLY public.instructions
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250505145057'),
+('20250505142635'),
+('20250505142024'),
 ('20250328134500'),
 ('20250124135444'),
 ('20250124134819'),

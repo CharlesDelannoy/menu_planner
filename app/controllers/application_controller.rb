@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, unless: :skip_pundit?, except: :index
   after_action :verify_policy_scoped, unless: :skip_pundit?, only: :index
 
+  def index
+  end
+
   private
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

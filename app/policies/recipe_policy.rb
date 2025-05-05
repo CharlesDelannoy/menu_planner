@@ -15,4 +15,9 @@ class RecipePolicy < ApplicationPolicy
   def new?
     true
   end
+
+  def show?
+    #TODO Add owner to recipe + only allow owner to see it
+    record
+  end
 end

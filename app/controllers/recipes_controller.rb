@@ -18,6 +18,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    authorize @recipe
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(:title, :duration, :shares, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity, :unit])
