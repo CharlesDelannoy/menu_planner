@@ -1,7 +1,7 @@
 <h1>Ajouter une recette</h1>
 
 <% @recipes.each do |recipe| %>
-  <p><%=link_to recipe.title, recipe_path(recipe) %></p>
+  <p><%=link_to recipe.title, recipe_path(recipe) %> <%=link_to "Update", edit_recipe_path(recipe) %></p>
   <ul>
     <% recipe.recipe_ingredients.each do |ri| %>
       <li><%= ri.quantity %> <%= ri.unit %> <%= ri.ingredient.name %></li>

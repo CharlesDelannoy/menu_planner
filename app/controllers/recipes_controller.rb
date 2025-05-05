@@ -18,6 +18,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    authorize @recipe
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
     authorize @recipe

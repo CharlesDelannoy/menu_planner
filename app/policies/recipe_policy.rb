@@ -12,6 +12,10 @@ class RecipePolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    record.author == user
+  end
+
   def new?
     true
   end

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: "pages#home"
   resources :ingredients, only: %i[index create]
-  resources :recipes, only: %i[index new create show]
+  resources :recipes, only: %i[index new create show edit]
   resources :recipe_ingredients, only: %i[create]
 end
