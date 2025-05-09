@@ -1,0 +1,15 @@
+<%= simple_form_for recipe, data: {controller: "recipe-creation"} do |f| %>
+  <%= f.input :title %>
+  <%= f.input :duration %>
+  <%= f.input :shares %>
+
+  <h3>Ingredients</h3>
+  <div data-recipe-creation-target="ingredients">
+  </div>
+  <%= link_to "Add ingredient", "", data: {"recipe-creation-target": "button", action: "click->recipe-creation#addIngredient", turbo: false} %>
+  <div><%= f.button :submit %></div>
+
+  <div style="display: none">
+    <%= render "recipe_ingredients_form", form: f %>
+  </div>
+<% end %>

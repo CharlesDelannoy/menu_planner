@@ -12,10 +12,6 @@ class RecipePolicy < ApplicationPolicy
     end
   end
 
-  def edit?
-    record.author == user
-  end
-
   def new?
     true
   end
@@ -23,5 +19,9 @@ class RecipePolicy < ApplicationPolicy
   def show?
     #TODO Add owner to recipe + only allow owner to see it
     record
+  end
+
+  def update?
+    record.author == user
   end
 end
