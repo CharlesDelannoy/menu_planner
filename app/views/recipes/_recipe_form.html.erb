@@ -4,12 +4,11 @@
   <%= f.input :shares %>
 
   <h3>Ingredients</h3>
+  <%= render "recipe_ingredients_form", form: f, ingredients: ingredients, new_ingredient: new_ingredient %>
   <div data-recipe-creation-target="ingredients">
   </div>
+
   <%= link_to "Add ingredient", "", data: {"recipe-creation-target": "button", action: "click->recipe-creation#addIngredient", turbo: false} %>
   <div><%= f.button :submit %></div>
 
-  <div style="display: none">
-    <%= render "recipe_ingredients_form", form: f %>
-  </div>
 <% end %>

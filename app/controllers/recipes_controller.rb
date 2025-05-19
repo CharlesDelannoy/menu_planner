@@ -21,15 +21,17 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    # @recipe_ingredients = @recipe.recipe_ingredients
-    # @new_recipe_ingredient = RecipeIngredient.new(recipe: @recipe)
-    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe_ingredients = @recipe.recipe_ingredients
+    @new_recipe_ingredient = RecipeIngredient.new(recipe: @recipe)
+    # @new_recipe_ingredient = @recipe.recipe_ingredients.build
   end
 
   def show
   end
 
   def update
+    binding.break
+    # @recipe_ingredient = RecipeIngredient.new(recipe_params[:recipe_ingredient])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -39,7 +41,7 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:title, :duration, :shares, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity, :unit])
+    params.require(:recipe).permit(:title, :duration, :shares, recipe_ingredient: [:ingredient_id, :quantity, :unit], recipe_ingredients_attributes: [:id, :ingredient_id, :quantity, :unit])
   end
 
   def fetch_recipe

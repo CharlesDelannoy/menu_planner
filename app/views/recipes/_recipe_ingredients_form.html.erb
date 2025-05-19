@@ -1,10 +1,23 @@
-<div data-recipe-creation-target="template">
+<%# ingredients.each do |ingredient| %>
   <div data-controller="recipe-remove-ingredient" data-recipe-remove-ingredient-target="ingredient">
-    <%= form.simple_fields_for :recipe_ingredients, child_index: "TEMPLATE_RECORD" do |i| %>
-        <%= i.input :quantity %>
-        <%= i.input :unit %>
-        <%= i.collection_select :ingredient_id, Ingredient.all.sort_by(&:name), :id, :name%>
+    <%= form.simple_fields_for :recipe_ingredients do |i| %>
+      <%= i.input :quantity %>
+      <%= i.input :unit %>
+      <%= i.collection_select :ingredient_id, Ingredient.all.sort_by(&:name), :id, :name%>
     <% end %>
     <%= link_to "Remove", "", data: { action: "click->recipe-remove-ingredient#removeIngredient", turbo: false} %>
+  </div>
+<%# end %>
+
+<div style="display: none">
+  <div data-recipe-creation-target="template">
+    <div data-controller="recipe-remove-ingredient" data-recipe-remove-ingredient-target="ingredient">
+      <%= form.simple_fields_for new_ingredient, child_index: "TEMPLATE_RECORD" do |i| %>
+          <%= i.input :quantity %>
+          <%= i.input :unit %>
+          <%= i.collection_select :ingredient_id, Ingredient.all.sort_by(&:name), :id, :name%>
+      <% end %>
+      <%= link_to "Remove", "", data: { action: "click->recipe-remove-ingredient#removeIngredient", turbo: false} %>
+    </div>
   </div>
 </div>
